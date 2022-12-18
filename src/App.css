@@ -1,38 +1,116 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
+
+
+:root {
+  --fs-sm: 12px;
+  --fs-md: 16px;
+  --fs-xmd: 20px;
+  --fs-lg: 25px;
+
+
+  --fw-light: 300;
+  --fw-medium: 500;
+  --fw-bold: 600;
+
+  --colors-wrapper-bg: #111b21;
+  --colors-app-bg: #54656f;
+
+  --colors-text-xlightgreen: #599389;
+  --colors-text-lightgreen: #176b5b;
+  --colors-text-standartgreen: #63cb77;
+
+  --radius: 10px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Nunito Sans', sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+
+/* auth */
+
+.auth-page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.auth-wrapper {
+  width: 90%;
+  max-width: 500px;
+  padding: 3rem 1.5rem;
+  background-color: #3b4a54;
+  border-radius: var(--radius);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 10px;
+}
+
+.auth-page-title {
+  font-size: var(--fs-xmd);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.auth-form {
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.css-dev-only-do-not-override-26rdvq {
+  box-sizing: border-box;
+  margin-top: 15px;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  border-bottom: 1px solid var(--colors-text-lightgreen);
+  color: white;
+  font-size: var(--fs-md);
 }
+
+.css-dev-only-do-not-override-26rdvq::placeholder {
+  color: white;
+  font-size: var(--fs-md);
+}
+
+.css-dev-only-do-not-override-26rdvq:hover {
+  border-left: 3px solid var(--colors-text-lightgreen);
+}
+
+.css-dev-only-do-not-override-26rdvq:focus {
+  border: 2px solid var(--colors-text-lightgreen);
+}
+
+
+.form-button {
+  background-color: var(--colors-text-standartgreen);
+  color: var(--colors-wrapper-bg);
+  transition: .3s;
+}
+
+.form-button:hover {
+  border: none !important;
+  color: var(--colors-app-bg) !important;
+}
+
+.auth-link {
+  color: white;
+}
+
+.auth-link:hover {
+  text-decoration: none;
+}
+
+/*  */
+
