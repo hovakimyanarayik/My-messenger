@@ -58,38 +58,28 @@
   color: white;
 }
 
+
 .auth-form {
   padding: 20px;
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 10px;
   align-items: center;
 }
 
-
-.css-dev-only-do-not-override-26rdvq {
-  box-sizing: border-box;
-  margin-top: 15px;
-  border: none;
-  background-color: transparent;
-  outline: none;
-  border-bottom: 1px solid var(--colors-text-lightgreen);
+.auth-form input {
   color: white;
-  font-size: var(--fs-md);
 }
 
-.css-dev-only-do-not-override-26rdvq::placeholder {
-  color: white;
-  font-size: var(--fs-md);
+.form-item {
+  width: 100%;
+  border: 1px solid lightgray;
+  border-radius: var(--radius);
 }
 
-.css-dev-only-do-not-override-26rdvq:hover {
-  border-left: 3px solid var(--colors-text-lightgreen);
-}
 
-.css-dev-only-do-not-override-26rdvq:focus {
-  border: 2px solid var(--colors-text-lightgreen);
+.auth-form input::placeholder {
+  color: lightgray;
 }
 
 
@@ -97,6 +87,11 @@
   background-color: var(--colors-text-standartgreen);
   color: var(--colors-wrapper-bg);
   transition: .3s;
+  margin-top: 10px;
+  padding: 1rem 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .form-button:hover {

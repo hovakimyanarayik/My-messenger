@@ -21,7 +21,7 @@ const UploadField:React.FC<UploadFieldProps> = ({ imageUrl, onUpload, handleRemo
     const uploadButton = (
         <div className='upload-button'>
             <p className="ant-upload-drag-icon">
-                <BsCardImage size={30} />
+                <BsCardImage color='lightgray' size={30} />
             </p>
             <p className="ant-upload-text">
                 Choose Avatar
