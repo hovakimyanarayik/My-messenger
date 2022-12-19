@@ -17,6 +17,9 @@ const RegForm: React.FC<RegFormProps> = ({onSubmit, uploadFile, handleRemoveFile
         onSubmit(values)
     }
 
+    // uploadingy kazmakerpel buttony disable anel ete isUploadinga
+    
+
     return ( 
         <Form
         className='auth-form'
@@ -51,8 +54,14 @@ const RegForm: React.FC<RegFormProps> = ({onSubmit, uploadFile, handleRemoveFile
         >
             <Input.Password bordered={false} className='auth-input' placeholder='Password' />
         </Form.Item>
-        <UploadField onUpload={uploadFile} />
-        <Button className='form-button' htmlType='submit'>Sign Up</Button>
+        <UploadField imageUrl={imageUrl} handleRemoveFile={handleRemoveFile} onUpload={uploadFile} />
+        <Button
+            className='form-button' 
+            htmlType='submit'
+            disabled={isUploading}
+        >
+            Sign Up
+        </Button>
     </Form>
      );
 }

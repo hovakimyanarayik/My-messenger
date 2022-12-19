@@ -1,20 +1,15 @@
 import React from 'react';
 import { Button, Form, Input } from "antd";
 import { LoginProps } from '../../../../types/authTypes';
-import useAuth from '../../../../hooks/useAuth';
 
+interface LoginFormProps {
+    onSubmit: (values: LoginProps) => void
+}
 
-const LoginForm: React.FC = () => {
-    const {isLoading, login} = useAuth()
+const LoginForm: React.FC<LoginFormProps> = ({onSubmit}) => {
 
     const onFinish = (values: LoginProps) => {
-        login(values)
-    }
-
-    if(isLoading) {
-        return (
-            <h1>Loading...</h1>
-        )
+        onSubmit(values)
     }
 
     return ( 

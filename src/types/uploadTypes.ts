@@ -2,7 +2,7 @@ import { UploadRequestOption as RcCustomRequestOptions } from 'rc-upload/lib/int
 
 
 export interface UploadFieldProps{
-    imageUrl?: string
+    imageUrl: string | null
     onUpload: (options: RcCustomRequestOptions) => void
     handleRemoveFile?: () => void
 }

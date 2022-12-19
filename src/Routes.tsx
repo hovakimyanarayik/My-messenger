@@ -1,8 +1,10 @@
-import { useRoutes, RouteObject } from 'react-router-dom';
+import { useRoutes, RouteObject} from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Registration from './pages/Registration';
 
+
+// will be protected and unprotected routes
 const Routes = () => {
     const routes: RouteObject[] = [
         {

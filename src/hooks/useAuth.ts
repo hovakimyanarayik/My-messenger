@@ -1,17 +1,29 @@
+import { useEffect } from 'react'
 import { RegProps, LoginProps, AuthHookMethods } from './../types/authTypes';
 import { useAppDispatch } from './useAppDispatch';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import { auth } from "../firebase.config";
 import { useAppSelector } from './useAppSelector';
-import { changeUser, endLoading, setError, startLoading } from '../store/slices/authSlice';
+import { changeUser, endLoading, setError, setInitialized, startLoading } from '../store/slices/authSlice';
+import useUsersBase from './useUsersBase';
 
 
 function useAuth() : AuthHookMethods {
-    const { user, isLoading, error } = useAppSelector(state => state.auth)
+    const { user, isLoading, error, initialized } = useAppSelector(state => state.auth)
     const dispatch = useAppDispatch()
+    const { addUser } = useUsersBase()
+
+    useEffect(() => {
+        if(error) {
+            setTimeout(() => dispatch(setError(null)), 2000)
+        }
+    }, [error])
 
     onAuthStateChanged(auth, () => {
         dispatch(changeUser(auth.currentUser))
+        if(!initialized) {
+            dispatch(setInitialized())
+        }
     })
 
     async function register({name, email, password, photoURL}: RegProps) {
@@ -27,6 +39,8 @@ function useAuth() : AuthHookMethods {
                 displayName: name,
                 photoURL: photoURL || 'urlcustom'
             })
+
+            await addUser({name, email, password, photoURL, uid: response.user.uid})
             
             
             dispatch(endLoading())
@@ -59,6 +73,7 @@ function useAuth() : AuthHookMethods {
         user,
         isLoading,
         error,
+        initialized,
         register,
         login,
         logout

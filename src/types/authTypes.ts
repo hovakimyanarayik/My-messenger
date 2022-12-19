@@ -4,6 +4,7 @@ export interface AuthState {
     user: MultiFactorUser | null
     isLoading: boolean
     error: string | null
+    initialized: boolean
 }
 
 export interface AuthHookMethods extends AuthState {

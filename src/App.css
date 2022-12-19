@@ -44,12 +44,14 @@
 .auth-wrapper {
   width: 90%;
   max-width: 500px;
+  height: 550px;
   padding: 3rem 1.5rem;
   background-color: #3b4a54;
   border-radius: var(--radius);
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   gap: 10px;
 }
 
@@ -109,3 +111,7 @@
 
 /*  */
 
+/* error message */
+.error-message {
+  color: red;
+}

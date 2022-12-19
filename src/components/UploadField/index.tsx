@@ -32,13 +32,18 @@ const UploadField:React.FC<UploadFieldProps> = ({ imageUrl, onUpload, handleRemo
             onRemove={handleRemoveFile}
         >
             {imageUrl ? (
-                <img
-                src={imageUrl}
-                alt="thumbnail"
-                style={{
-                    width: '100%',
-                }}
-                />
+                <div className="upload-button">
+                    <img
+                        src={imageUrl}
+                        alt="thumbnail"
+                        className='upload-image-preview'
+                        // style={{
+                        //     width: '40%',
+                        //     borderRadius: '50%'
+                        // }}
+                    />
+                </div>
+
             ) : (
                 uploadButton
             )}
