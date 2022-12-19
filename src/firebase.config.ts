@@ -5,7 +5,7 @@ import { getStorage } from "firebase/storage";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyC-pFlPp26tBVFX76GjgQdSMn6e8rVrZp0",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: "my-messenger-2ba32.firebaseapp.com",
   projectId: "my-messenger-2ba32",
   storageBucket: "my-messenger-2ba32.appspot.com",

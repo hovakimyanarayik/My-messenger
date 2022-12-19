@@ -3,12 +3,7 @@ import React from 'react';
 import { Upload } from 'antd';
 import { UploadRequestOption as RcCustomRequestOptions } from 'rc-upload/lib/interface';
 import { BsCardImage } from 'react-icons/bs'
-
-interface UploadFieldProps{
-    imageUrl?: string
-    onUpload: (options: RcCustomRequestOptions) => void
-    handleRemoveFile?: () => void
-}
+import { UploadFieldProps } from '../../types/uploadTypes';
 
 
 const UploadField:React.FC<UploadFieldProps> = ({ imageUrl, onUpload, handleRemoveFile }) => {
