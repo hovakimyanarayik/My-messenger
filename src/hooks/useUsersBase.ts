@@ -1,6 +1,6 @@
 import { UsersBaseMethods, UserPropsWithId } from './../types/userTypes';
 import { useCallback } from 'react'
-import { collection, doc, setDoc } from "firebase/firestore";
+import { collection, doc, DocumentData, getDocs, query, QueryDocumentSnapshot, setDoc, where } from "firebase/firestore";
 import { db } from "../firebase.config";
 
 function useUsersBase(): UsersBaseMethods {
@@ -14,8 +14,28 @@ function useUsersBase(): UsersBaseMethods {
         }
     }, [usersCollectionRef])
 
+    const getUsers = useCallback(async (fn: (users: any) => void) => {
+        try {
+            const data = await getDocs(usersCollectionRef);
+            const users = data.docs.map((doc) => ({ ...doc.data()}))
+            fn(users)
+        } catch (error: any) {
+            throw new Error(error.message)
+        }
+    }, [])
 
-    return {addUser}
+    const getByName = useCallback(async (name: string, fn: (users: any) => void) => {
+        const q = query(usersCollectionRef, where("name", "==", name));
+        const querySnapshot = await getDocs(q);
+        const foundedUsers: any[] = []
+        querySnapshot.forEach(doc => {
+            foundedUsers.push(doc.data())
+        })
+        fn(foundedUsers);
+        
+    }, [])
+
+    return {addUser, getUsers, getByName}
 }
 
 export default useUsersBase

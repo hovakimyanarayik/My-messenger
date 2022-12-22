@@ -1,13 +1,18 @@
-import React, { useEffect } from "react";
-import useAuth from "../../hooks/useAuth";
+import './style.css'
+import React, { useState } from "react";
+import Chats from './components/Chats';
+import OpenedChat from './components/OpenedChat';
+
 
 
 const Home: React.FC = () => {
-    const { logout } = useAuth()
+    const [opened, setIsOpened] = useState<boolean>(false)
+
 
     return ( 
-        <div>
-            <button onClick={logout}>Logout</button>
+        <div className="home-wrapper">
+            <Chats isOpen={opened} handleClose={() => setIsOpened(false)} />
+            <OpenedChat handleOpenDrawer={() => setIsOpened(true)} />
         </div>
      );
 }

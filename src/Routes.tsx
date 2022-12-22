@@ -23,6 +23,6 @@ const Routes = () => {
 
     return useRoutes(routes);
 }
- 
+
 export default Routes;
 

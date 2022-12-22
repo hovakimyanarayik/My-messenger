@@ -15,11 +15,15 @@
   --colors-wrapper-bg: #111b21;
   --colors-app-bg: #54656f;
 
+  --colors-app-middle: #3b4a54;
+
   --colors-text-xlightgreen: #599389;
   --colors-text-lightgreen: #176b5b;
   --colors-text-standartgreen: #63cb77;
 
   --radius: 10px;
+  --shadow: rgba(245, 245, 245, 0.2) 0 0 8px;
+
 }
 
 * {
@@ -44,9 +48,9 @@
 .auth-wrapper {
   width: 90%;
   max-width: 500px;
-  height: 550px;
+  min-height: 550px;
   padding: 3rem 1.5rem;
-  background-color: #3b4a54;
+  background-color: var(--colors-app-middle);
   border-radius: var(--radius);
   display: flex;
   flex-direction: column;

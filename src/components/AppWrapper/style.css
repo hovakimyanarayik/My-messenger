@@ -14,5 +14,7 @@
     height: 90vh;
     background-color: var(--colors-app-bg);
     border-radius: var(--radius);
+    overflow: hidden;
+    position: relative;
   }
   

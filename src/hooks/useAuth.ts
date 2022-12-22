@@ -7,6 +7,7 @@ import { useAppSelector } from './useAppSelector';
 import { changeUser, endLoading, setError, setInitialized, startLoading } from '../store/slices/authSlice';
 import useUsersBase from './useUsersBase';
 
+const defaultPhotoUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyDgkPQavzX7KwcLzeAsf0fgOx_-D51F3fag&usqp=CAU'
 
 function useAuth() : AuthHookMethods {
     const { user, isLoading, error, initialized } = useAppSelector(state => state.auth)
@@ -37,10 +38,10 @@ function useAuth() : AuthHookMethods {
             )
             await updateProfile(response.user, {
                 displayName: name,
-                photoURL: photoURL || 'urlcustom'
+                photoURL: photoURL || defaultPhotoUrl
             })
 
-            await addUser({name, email, password, photoURL, uid: response.user.uid})
+            await addUser({name, email, photoURL: photoURL || defaultPhotoUrl, uid: response.user.uid})
             
             
             dispatch(endLoading())

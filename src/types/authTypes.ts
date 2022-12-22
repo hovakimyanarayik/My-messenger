@@ -17,7 +17,7 @@ export interface RegProps {
     name: string
     email: string
     password: string
-    photoURL?: string | null
+    photoURL: string | null
 }
 
 export interface LoginProps {
