@@ -9,7 +9,17 @@ const Routes = () => {
     const routes: RouteObject[] = [
         {
             path: '',
-            element: <Home />
+            // element: <Home />
+            children: [
+                {
+                    path: '',
+                    element: <Home />
+                },
+                {
+                    path: ':slug',
+                    element: <Home />
+                }
+            ]
         },
         {
             path: 'login',

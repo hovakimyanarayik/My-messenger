@@ -6,6 +6,7 @@ import { auth } from "../firebase.config";
 import { useAppSelector } from './useAppSelector';
 import { changeUser, endLoading, setError, setInitialized, startLoading } from '../store/slices/authSlice';
 import useUsersBase from './useUsersBase';
+import useUserChats from './useUserChats';
 
 const defaultPhotoUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyDgkPQavzX7KwcLzeAsf0fgOx_-D51F3fag&usqp=CAU'
 

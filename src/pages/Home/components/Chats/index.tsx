@@ -6,6 +6,7 @@ import UsersList from './UsersList';
 import { UserPropsWithId } from '../../../../types/userTypes';
 import useUsersBase from '../../../../hooks/useUsersBase';
 import FoundedUsers from './FoundedUsers';
+import useUserChats from '../../../../hooks/useUserChats';
 
 
 interface ChatsProps {
@@ -19,6 +20,7 @@ const Chats: React.FC<ChatsProps> = ({isOpen, handleClose}) => {
     const [users, setUsers] = useState<UserPropsWithId[] | null>(null)
     const [searchedUsers, setSearchedUsers] = useState<UserPropsWithId[] | null>(null)
     const {getUsers, getByName} = useUsersBase()
+    const { getUserChatsList } = useUserChats()
 
     function handleSearchUser(value: string) {
         if(value.length) {
@@ -30,6 +32,7 @@ const Chats: React.FC<ChatsProps> = ({isOpen, handleClose}) => {
 
     useEffect(() => {
         getUsers(setUsers)
+        getUserChatsList()
     }, [])
 
     

@@ -1,7 +1,12 @@
-import { MultiFactorUser } from "firebase/auth"
+import {UserInfo } from "firebase/auth"
+export interface User extends UserInfo{
+    displayName: string
+    email: string
+    photoUrl: string
+}
 
 export interface AuthState {
-    user: MultiFactorUser | null
+    user: User | null
     isLoading: boolean
     error: string | null
     initialized: boolean

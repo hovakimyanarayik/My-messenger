@@ -8,6 +8,7 @@ interface FoundedUsersProps {
 
 const FoundedUsers:React.FC<FoundedUsersProps> = ({users}) => {
     console.log( 'foundedusers',users);
+
     
     return ( 
         <div className='founded-users'>

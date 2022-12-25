@@ -1,12 +1,19 @@
 import { Avatar } from 'antd';
 import React from 'react';
+import useUserChats from '../../../../../../hooks/useUserChats';
 import { UserPropsWithId } from '../../../../../../types/userTypes';
 
 
-
 const User:React.FC<UserPropsWithId> = ({email, name, photoURL, uid}) => {
-    return ( 
-        <div className="user-chat">
+    const { onChatOpen } = useUserChats()
+
+    const handleSelect = async () => {
+        onChatOpen({email, name, photoURL, uid})
+    }
+
+
+    return (
+        <div className="user-chat" onClick={handleSelect}>
             <Avatar size={50} src={photoURL} />
             <div>
                 <p className="user-chat-name">{name}</p>
@@ -15,5 +22,5 @@ const User:React.FC<UserPropsWithId> = ({email, name, photoURL, uid}) => {
         </div>
      );
 }
- 
+
 export default User;
