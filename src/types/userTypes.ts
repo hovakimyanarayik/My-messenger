@@ -1,3 +1,4 @@
+import { type } from "os";
 import { RegProps } from "./authTypes";
 
 // export interface UserPropsWithId extends RegProps {
@@ -14,3 +15,13 @@ export interface UsersBaseMethods {
     getByName: (name: string, fn: (users: any) => void) => void
 }
 
+export type UserChatItem = [
+    string, 
+    {
+        date: {
+            nanoseconds: number
+            seconds: number
+        }
+        userInfo: UserPropsWithId
+    }
+] 

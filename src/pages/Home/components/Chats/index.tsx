@@ -2,11 +2,12 @@ import './style.css'
 import React, { useEffect, useState } from 'react';
 import Logo from '../../../../components/Logo';
 import SearchUser from './SearchUser';
-import UsersList from './UsersList';
-import { UserPropsWithId } from '../../../../types/userTypes';
+import { UserChatItem, UserPropsWithId } from '../../../../types/userTypes';
 import useUsersBase from '../../../../hooks/useUsersBase';
 import FoundedUsers from './FoundedUsers';
 import useUserChats from '../../../../hooks/useUserChats';
+import UserChatsList from './UserChatsList';
+import CurrentUserInfo from './CurrentUserInfo';
 
 
 interface ChatsProps {
@@ -14,10 +15,9 @@ interface ChatsProps {
     handleClose: () => void
 }
 
-// Click aneluc amen User Chati vra gorcoxutyunna petq mtacel
 
 const Chats: React.FC<ChatsProps> = ({isOpen, handleClose}) => {
-    const [users, setUsers] = useState<UserPropsWithId[] | null>(null)
+    const [userChats, setUserChats] = useState<UserChatItem[] | null>(null)
     const [searchedUsers, setSearchedUsers] = useState<UserPropsWithId[] | null>(null)
     const {getUsers, getByName} = useUsersBase()
     const { getUserChatsList } = useUserChats()
@@ -31,17 +31,16 @@ const Chats: React.FC<ChatsProps> = ({isOpen, handleClose}) => {
     }
 
     useEffect(() => {
-        getUsers(setUsers)
-        getUserChatsList()
+        getUserChatsList(setUserChats)
     }, [])
-
     
     return (
         <div className={`chats-wrapper ${isOpen && 'open'}`}>
             <Logo size={32} />
+            <CurrentUserInfo />
             <SearchUser onSearch={handleSearchUser} />
             {searchedUsers && <FoundedUsers users={searchedUsers} />}
-            {users?.length && <UsersList users={users}  />}
+            {userChats?.length ? <UserChatsList userChats={userChats} /> : null}
             <button 
                 className='close-button chats-button'
                 onClick={handleClose}

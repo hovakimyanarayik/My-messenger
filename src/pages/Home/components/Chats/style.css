@@ -72,6 +72,41 @@
     padding-bottom: 1rem;
 }
 
+.current-user-info-wrapper {
+    width: 100%;
+    padding: .5rem 1rem ;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--colors-app-bg);
+}
+
+.current-user-info-wrapper > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    font-size: var(--fs-xmd);
+}
+
+.logout-button {
+    border: none;
+    /* color: var(--colors-text-xlightgreen); */
+    color: white;
+    padding: 3px;
+    border-radius: 3px;
+    background-color: var(--colors-wrapper-bg);
+    cursor: pointer;
+    transition: .2s;
+    border: 1px solid var(--colors-wrapper-bg);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-bold);
+}
+.logout-button:hover {
+    background-color: var(--colors-app-bg);
+    color: var(--colors-wrapper-bg);
+}
+
 @media screen and (max-width: 700px) {
     .chats-wrapper {
         position: absolute;

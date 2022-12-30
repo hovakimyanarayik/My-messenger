@@ -1,13 +1,13 @@
-import { collection, getDocs } from 'firebase/firestore';
-import { UserPropsWithId } from './../types/userTypes';
-import { useCallback } from 'react';
+import { onSnapshot } from 'firebase/firestore';
+import { UserChatItem, UserPropsWithId } from './../types/userTypes';
+import { useCallback, useMemo } from 'react';
 import { doc, setDoc, getDoc, updateDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from './../firebase.config';
 import useAuth from './useAuth';
 import { useNavigate } from 'react-router-dom';
 
 
-function useUserChats() {
+const useUserChats = () => {
     const {user} = useAuth()
     const navigate = useNavigate()
 
@@ -15,6 +15,7 @@ function useUserChats() {
         return firstId > secondId ? firstId + secondId : secondId + firstId
     }
 
+    // es ete useChat hook sarqem tanela petq yndex CHAT dbinna
     const createEmpityChat = async (combinedId: string) => {
         await setDoc(doc(db,'chats', combinedId), {messages: []})
     }
@@ -52,23 +53,24 @@ function useUserChats() {
                 photoURL: user.photoURL
             })
         }
-        navigate(`${selectedUser.uid}`)
+        navigate(`/${selectedUser.uid}`)
 
     }, [])
 
-    const getUserChatsList = useCallback(async () => {
-        if(!user) return;
-        // const userChatsRef = collection(db, 'userChats')
 
-        // const data = await getDocs(userChatsRef)
-        // const chatList = data.docs.map((doc) => ({ ...doc.data()}))
-        const data = await getDoc(doc(db, 'userChats', user.uid))
-        const chats = data.data()
-        console.log(chats);
+    const getUserChatsList = useCallback(async (fn: (userChats: UserChatItem[]) => void) => {
+        if(!user) return;
+        onSnapshot(doc(db, 'userChats', user.uid), (doc) => {
+            const data = doc.data()
+            const userChats: UserChatItem[] = data ? Object.entries(data) : []
+            fn(userChats)
+        })
+
     }, [])
 
     return {onChatOpen, getUserChatsList}
 
 }
+
 
 export default useUserChats
