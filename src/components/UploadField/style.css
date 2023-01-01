@@ -10,5 +10,8 @@
 
 .upload-image-preview {
     width: 100px;
+}
+
+.upload-image-preview.cirlce {
     border-radius: 50%;
 }

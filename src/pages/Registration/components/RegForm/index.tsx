@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Form, Input } from 'antd';
 import UploadField from '../../../../components/UploadField';
 import { RegProps } from '../../../../types/authTypes';
+import UploadButton from './components/UploadButton';
 
 interface RegFormProps {
     onSubmit: (values: RegProps) => void
@@ -54,7 +55,9 @@ const RegForm: React.FC<RegFormProps> = ({onSubmit, uploadFile, handleRemoveFile
         >
             <Input.Password bordered={false} className='auth-input' placeholder='Password' />
         </Form.Item>
-        <UploadField imageUrl={imageUrl} handleRemoveFile={handleRemoveFile} onUpload={uploadFile} />
+        <UploadField imageUrl={imageUrl} handleRemoveFile={handleRemoveFile} onUpload={uploadFile}>
+            <UploadButton />
+        </UploadField>
         <Button
             className='form-button' 
             htmlType='submit'

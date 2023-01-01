@@ -5,15 +5,14 @@ import { doc, setDoc, getDoc, updateDoc, serverTimestamp } from 'firebase/firest
 import { db } from './../firebase.config';
 import useAuth from './useAuth';
 import { useNavigate } from 'react-router-dom';
+import { combineIds } from '../helpers';
 
 
 const useUserChats = () => {
     const {user} = useAuth()
     const navigate = useNavigate()
 
-    function combineIds(firstId: string, secondId: string): string {
-        return firstId > secondId ? firstId + secondId : secondId + firstId
-    }
+
 
     // es ete useChat hook sarqem tanela petq yndex CHAT dbinna
     const createEmpityChat = async (combinedId: string) => {

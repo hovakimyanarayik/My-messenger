@@ -2,27 +2,23 @@ import './style.css'
 import React from 'react';
 import { Upload } from 'antd';
 import { UploadRequestOption as RcCustomRequestOptions } from 'rc-upload/lib/interface';
-import { BsCardImage } from 'react-icons/bs'
+import { BsCardImage} from 'react-icons/bs'
 import { UploadFieldProps } from '../../types/uploadTypes';
 
 
-const UploadField:React.FC<UploadFieldProps> = ({ imageUrl, onUpload, handleRemoveFile }) => {
+const UploadField:React.FC<UploadFieldProps> = ({ 
+    imageUrl, 
+    onUpload, 
+    handleRemoveFile, 
+    children, 
+    showUploadList = true,
+    previewType = 'circle'
+}) => {
 
     const uploadImage = (options: RcCustomRequestOptions) => {
         onUpload(options)
     }
 
-
-    const uploadButton = (
-        <div className='upload-button'>
-            <p className="ant-upload-drag-icon">
-                <BsCardImage color='lightgray' size={30} />
-            </p>
-            <p className="ant-upload-text">
-                Choose Avatar
-            </p>
-        </div>
-      );
 
       return (
         <Upload
@@ -30,22 +26,19 @@ const UploadField:React.FC<UploadFieldProps> = ({ imageUrl, onUpload, handleRemo
             accept='image/*'
             customRequest={uploadImage}
             onRemove={handleRemoveFile}
+            showUploadList={showUploadList}
         >
             {imageUrl ? (
                 <div className="upload-button">
                     <img
                         src={imageUrl}
                         alt="thumbnail"
-                        className='upload-image-preview'
-                        // style={{
-                        //     width: '40%',
-                        //     borderRadius: '50%'
-                        // }}
+                        className={`upload-image-preview ${previewType}`}
                     />
                 </div>
 
             ) : (
-                uploadButton
+                children
             )}
         </Upload>
       );

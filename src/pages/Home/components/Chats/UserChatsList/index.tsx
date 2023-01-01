@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { UserChatItem } from '../../../../../types/userTypes';
 import User from '../UsersList/User';
 
@@ -7,9 +7,14 @@ interface UserChatsListProps {
 }
 
 const UserChatsList: React.FC<UserChatsListProps> = ({userChats}) => {
+
+    const sortedChats = useMemo(() => {
+        return userChats.sort((a, b) => (a[1].date.seconds - b[1].date.seconds))
+    }, [userChats])
+    
     return (
         <div className='users-wrapper'>
-            {userChats.map(([combinedId, {date, userInfo}]) => (
+            {sortedChats.map(([combinedId, {date, userInfo}]) => (
                 <User 
                     key={combinedId} 
                     email={userInfo.email} 

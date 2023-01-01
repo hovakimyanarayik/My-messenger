@@ -38,7 +38,6 @@ function useStorage(): StorageHookMethods {
         setDownloadURL(null)
     }
 
-
     return {isUploading, downloadURL, uploadFile, removeFileURL}
 }
 

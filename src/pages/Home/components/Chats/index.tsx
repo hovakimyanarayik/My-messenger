@@ -19,7 +19,7 @@ interface ChatsProps {
 const Chats: React.FC<ChatsProps> = ({isOpen, handleClose}) => {
     const [userChats, setUserChats] = useState<UserChatItem[] | null>(null)
     const [searchedUsers, setSearchedUsers] = useState<UserPropsWithId[] | null>(null)
-    const {getUsers, getByName} = useUsersBase()
+    const { getByName} = useUsersBase()
     const { getUserChatsList } = useUserChats()
 
     function handleSearchUser(value: string) {
