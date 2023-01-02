@@ -2,7 +2,6 @@ import './style.css'
 import React from 'react';
 import { Upload } from 'antd';
 import { UploadRequestOption as RcCustomRequestOptions } from 'rc-upload/lib/interface';
-import { BsCardImage} from 'react-icons/bs'
 import { UploadFieldProps } from '../../types/uploadTypes';
 
 

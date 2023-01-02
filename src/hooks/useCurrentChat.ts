@@ -1,9 +1,7 @@
-import { IMessage } from './../types/messageTypes';
-import { arrayUnion, collection, Timestamp, updateDoc, onSnapshot } from 'firebase/firestore';
-import { setDoc } from 'firebase/firestore';
-import { db } from './../firebase.config';
-import { doc } from 'firebase/firestore';
 import { useCallback } from 'react';
+import { arrayUnion, Timestamp, updateDoc, onSnapshot, doc } from 'firebase/firestore';
+import { db } from './../firebase.config';
+import { IMessage } from './../types/messageTypes';
 import { useAppSelector } from './useAppSelector';
 import { useAppDispatch } from './useAppDispatch';
 import useUsersBase from './useUsersBase';

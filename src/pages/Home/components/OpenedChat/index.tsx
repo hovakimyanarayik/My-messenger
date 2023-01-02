@@ -7,7 +7,6 @@ import Messages from './components/Messages';
 import useCurrentChat from '../../../../hooks/useCurrentChat';
 import OpenedChatWrapper from './components/OpenedChatWrapper';
 import SkeletonLoader from '../../../../components/SkeletonLoader';
-import Logo from '../../../../components/Logo';
 import DefaultLook from './components/DefaultLook';
 
 interface OpenedChatProps {

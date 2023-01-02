@@ -17,55 +17,53 @@ const RegForm: React.FC<RegFormProps> = ({onSubmit, uploadFile, handleRemoveFile
     const onFinish = (values: RegProps) => {
         onSubmit(values)
     }
-
-    // uploadingy kazmakerpel buttony disable anel ete isUploadinga
     
 
     return ( 
         <Form
-        className='auth-form'
-        onFinish={onFinish}
-    >
-        <Form.Item 
-            rules={[
-                {required: true, message: 'Please input your Name!'},
-            ]}
-            className='form-item'
-            name='name'
+            className='auth-form'
+            onFinish={onFinish}
         >
-            <Input bordered={false} className='auth-input' placeholder='Name' />
-        </Form.Item>
-        <Form.Item 
-            rules={[
-                {required: true, message: 'Please input your Email!'},
-                {type: 'email', message: 'Invalid email.'}
-            ]}
-            className='form-item'
-            name='email'
-        >
-            <Input bordered={false} className='auth-input' placeholder='Email' />
-        </Form.Item>
-        <Form.Item 
-            rules={[
-                { required: true, message: 'Please input your Password!' },
-                {min: 8, message: 'Passowrd will contain minimum 8 symbols'}
-            ]}
-            className='form-item'
-            name='password'
-        >
-            <Input.Password bordered={false} className='auth-input' placeholder='Password' />
-        </Form.Item>
-        <UploadField imageUrl={imageUrl} handleRemoveFile={handleRemoveFile} onUpload={uploadFile}>
-            <UploadButton />
-        </UploadField>
-        <Button
-            className='form-button' 
-            htmlType='submit'
-            disabled={isUploading}
-        >
-            Sign Up
-        </Button>
-    </Form>
+            <Form.Item 
+                rules={[
+                    {required: true, message: 'Please input your Name!'},
+                ]}
+                className='form-item'
+                name='name'
+            >
+                <Input bordered={false} className='auth-input' placeholder='Name' />
+            </Form.Item>
+            <Form.Item 
+                rules={[
+                    {required: true, message: 'Please input your Email!'},
+                    {type: 'email', message: 'Invalid email.'}
+                ]}
+                className='form-item'
+                name='email'
+            >
+                <Input bordered={false} className='auth-input' placeholder='Email' />
+            </Form.Item>
+            <Form.Item 
+                rules={[
+                    { required: true, message: 'Please input your Password!' },
+                    {min: 8, message: 'Passowrd will contain minimum 8 symbols'}
+                ]}
+                className='form-item'
+                name='password'
+            >
+                <Input.Password bordered={false} className='auth-input' placeholder='Password' />
+            </Form.Item>
+            <UploadField imageUrl={imageUrl} handleRemoveFile={handleRemoveFile} onUpload={uploadFile}>
+                <UploadButton />
+            </UploadField>
+            <Button
+                className='form-button' 
+                htmlType='submit'
+                disabled={isUploading}
+            >
+                Sign Up
+            </Button>
+        </Form>
      );
 }
  

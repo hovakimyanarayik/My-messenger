@@ -1,9 +1,9 @@
-import { Avatar } from 'antd';
 import React from 'react';
+import { Avatar } from 'antd';
 import useAuth from '../../../../../hooks/useAuth';
 
 
-const CurrentUserInfo = () => {
+const CurrentUserInfo: React.FC = () => {
     const {user, logout} = useAuth()
 
     if(!user) return null;

@@ -1,7 +1,8 @@
-import { UsersBaseMethods, UserPropsWithId } from './../types/userTypes';
 import { useCallback } from 'react'
 import { collection, doc, getDoc, getDocs, query, setDoc, where } from "firebase/firestore";
 import { db } from "../firebase.config";
+import { UsersBaseMethods, UserPropsWithId } from './../types/userTypes';
+
 
 function useUsersBase(): UsersBaseMethods {
     const usersCollectionRef = collection(db, "users");

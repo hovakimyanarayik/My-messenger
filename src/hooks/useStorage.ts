@@ -1,7 +1,7 @@
-import { StorageHookMethods } from './../types/uploadTypes';
 import { useState } from "react";
-import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { storage } from "../firebase.config";
+import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import { StorageHookMethods } from './../types/uploadTypes';
 import { UploadRequestOption as RcCustomRequestOptions } from 'rc-upload/lib/interface';
 
 

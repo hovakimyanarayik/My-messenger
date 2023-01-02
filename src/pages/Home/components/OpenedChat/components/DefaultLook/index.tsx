@@ -2,7 +2,7 @@ import React from 'react';
 import Logo from '../../../../../../components/Logo';
 
 
-const DefaultLook = () => {
+const DefaultLook: React.FC = () => {
     return ( 
         <div className='default-look-wrapper'>
             <Logo size={60} />

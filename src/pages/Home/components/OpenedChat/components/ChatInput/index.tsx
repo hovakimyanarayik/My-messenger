@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { BsEmojiSmileFill } from 'react-icons/bs';
 import {ImAttachment} from 'react-icons/im'
 import { IoMdSend } from 'react-icons/io'

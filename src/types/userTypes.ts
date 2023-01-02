@@ -1,9 +1,6 @@
 import { RegProps } from "./authTypes";
 
-// export interface UserPropsWithId extends RegProps {
-//     uid: string
-//     password: never
-// }
+
 export interface UserPropsWithId extends Omit<RegProps, 'password'> {
     uid: string
 }

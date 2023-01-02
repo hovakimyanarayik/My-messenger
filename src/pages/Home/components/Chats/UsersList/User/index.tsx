@@ -1,5 +1,5 @@
-import { Avatar } from 'antd';
 import React from 'react';
+import { Avatar } from 'antd';
 import useAuth from '../../../../../../hooks/useAuth';
 import useUserChats from '../../../../../../hooks/useUserChats';
 import { UserPropsWithId } from '../../../../../../types/userTypes';

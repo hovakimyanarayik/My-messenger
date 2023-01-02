@@ -1,9 +1,9 @@
-import { doc, setDoc } from 'firebase/firestore';
 import { useEffect } from 'react'
+import { auth, db } from "../firebase.config";
+import { doc, setDoc } from 'firebase/firestore';
 import { RegProps, LoginProps, AuthHookMethods } from './../types/authTypes';
 import { useAppDispatch } from './useAppDispatch';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
-import { auth, db } from "../firebase.config";
 import { useAppSelector } from './useAppSelector';
 import { changeUser, endLoading, setError, setInitialized, startLoading } from '../store/slices/authSlice';
 import useUsersBase from './useUsersBase';

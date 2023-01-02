@@ -1,4 +1,5 @@
 import {UserInfo } from "firebase/auth"
+
 export interface User extends UserInfo{
     displayName: string
     email: string

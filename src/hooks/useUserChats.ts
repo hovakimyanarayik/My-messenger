@@ -1,8 +1,7 @@
-import { onSnapshot } from 'firebase/firestore';
-import { UserChatItem, UserPropsWithId } from './../types/userTypes';
-import { useCallback, useMemo } from 'react';
-import { doc, setDoc, getDoc, updateDoc, serverTimestamp } from 'firebase/firestore';
+import { useCallback } from 'react';
 import { db } from './../firebase.config';
+import { onSnapshot, doc, setDoc, getDoc, updateDoc, serverTimestamp } from 'firebase/firestore';
+import { UserChatItem, UserPropsWithId } from './../types/userTypes';
 import useAuth from './useAuth';
 import { useNavigate } from 'react-router-dom';
 import { combineIds } from '../helpers';
