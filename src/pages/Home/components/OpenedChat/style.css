@@ -1,6 +1,7 @@
 .opened-chat-wrapper {
     flex: 2;
     position: relative;
+    width: 100%;
 }
 
 .top-bar {
@@ -16,7 +17,7 @@
     align-items: center;
     background-color: var(--colors-app-bg);
     box-shadow: var(--shadow);
-    z-index: 100;
+    z-index: 10;
 }
 
 .opened-chat-info {
@@ -95,7 +96,7 @@
     height: 100%;
     width: 100%;
     overflow-y: scroll;
-    padding: 70px 5px;
+    padding: 90px 5px 65px;
     display: flex;
     flex-direction: column-reverse;
 }
@@ -120,12 +121,11 @@
 
 
 .messageContent {
-    /* max-width: 70%; */
     display: flex;
     flex-direction: column;
     gap: 10px;
-    max-width: 350px;
     width: 100%;
+    max-width: 350px;
 }
 .messageContent > p{
     background-color: var(--colors-app-middle);
@@ -150,15 +150,52 @@
 .message.owner > .messageContent > p {
     border-radius: 10px 0px 10px 10px;
     max-width: max-content;
-    background-color: var(--colors-text-standartgreen);
+    background-color: var(--colors-text-xlightgreen);
     color: var(--colors-wrapper-bg);
     width: 100%;
     word-wrap: break-word;
+    color: white;
 }
 
 
 .open-button {
     position: absolute;
     left: 0;
-    top: 200px;
+    top: 280px;
+    height: 120px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: none;
+    background-color: var(--colors-text-lightgreen);
+    opacity: .7;
+    transition: .2s;
+    color: white;
+    align-items: center;
+}
+
+.open-button:hover {
+    opacity: 1;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.default-look-wrapper {
+    padding-top: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.default-look-wrapper > p {
+    font-size: var(--fs-lg);
+    color: white;
+    font-weight: var(--fw-medium);
+    letter-spacing: 1px;
+    margin-top: 50px;
+}
+
+@media screen and (max-width: 500px) {
+    .messageContent {
+        max-width: 80%;
+    }
 }

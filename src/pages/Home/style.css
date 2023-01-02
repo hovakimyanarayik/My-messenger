@@ -4,15 +4,14 @@
     display: flex;
 }
 
-
 .chats-button {
     display: none;
+    cursor: pointer;
 }
-
 
 
 @media screen and (max-width: 700px) {
     .chats-button {
-        display: inline;
+        display: flex;
     }
 }

@@ -7,6 +7,7 @@
     align-items: center;
     gap: 2rem;
     padding: 1rem 0;
+    z-index: 1001;
 }
 
 .close-button {
@@ -14,7 +15,13 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: 50px;
+    height: 60px;
+    background-color: var(--colors-text-lightgreen);
+    color: white;
+    border: none;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 40px;
 }
 
 
@@ -23,10 +30,12 @@
     height: 30px;
     outline: none;
     border-radius: 5px;
-    background-color: var(--colors-app-bg);
+    background-color: inherit;
     color: white;
     padding-left: 5px;
     font-size: var(--fs-md);
+    border: none;
+    border-bottom: 3px solid var(--colors-app-bg);
 }
 
 .search-input::placeholder {
@@ -71,7 +80,7 @@
 
 .founded-users {
     width: 100%;
-    border-bottom: 3px solid var(--colors-wrapper-bg);
+    border-bottom: 3px solid var(--colors-app-bg);
     padding-bottom: 1rem;
 }
 

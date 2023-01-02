@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom'
+import React, { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom'
 import Logo from '../../components/Logo';
 import SkeletonLoader from '../../components/SkeletonLoader';
 import useAuth from '../../hooks/useAuth';
@@ -9,8 +9,15 @@ import RegForm from './components/RegForm';
 
 
 const Registration: React.FC = () => {
-    const {isLoading, error, register} = useAuth()
+    const {isLoading, error, register, user} = useAuth()
     const {downloadURL, isUploading, removeFileURL, uploadFile} = useStorage()
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if(user) {
+            navigate('/', {replace: true})
+        }
+    }, [user])
 
     const onSubmit = (values: RegProps) => {
         register({...values, photoURL: downloadURL})

@@ -12,9 +12,6 @@ const useUserChats = () => {
     const {user} = useAuth()
     const navigate = useNavigate()
 
-
-
-    // es ete useChat hook sarqem tanela petq yndex CHAT dbinna
     const createEmpityChat = async (combinedId: string) => {
         await setDoc(doc(db,'chats', combinedId), {messages: []})
     }
@@ -40,7 +37,6 @@ const useUserChats = () => {
         const res = await getDoc(doc(db, 'chats', combinedId))
 
         if(!res.exists()) {
-            // create chat in chats collection
             await createEmpityChat(combinedId)
 
             await createNewUsersChat(user.uid, selectedUser)

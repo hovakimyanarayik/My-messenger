@@ -1,4 +1,5 @@
 .logo h1 {
     color: var(--colors-text-standartgreen);
     font-weight: var(--fw-normal);
+    text-align: center;
 }

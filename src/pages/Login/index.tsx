@@ -1,6 +1,6 @@
 import { Skeleton } from 'antd';
-import React from 'react';
-import { Link } from 'react-router-dom'
+import React, { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom'
 import Logo from '../../components/Logo';
 import SkeletonLoader from '../../components/SkeletonLoader';
 import useAuth from '../../hooks/useAuth';
@@ -9,8 +9,13 @@ import LoginForm from './components/LoginForm';
 
 
 const Login: React.FC = () => {
-    const {isLoading, error,  login} = useAuth()
-
+    const {isLoading, error,  login, user} = useAuth()
+    const navigate = useNavigate()
+    useEffect(() => {
+        if(user) {
+            navigate('/', {replace: true})
+        }
+    }, [user])
 
     const handleLogin = (values: LoginProps) => {
         login(values)

@@ -8,6 +8,7 @@ import FoundedUsers from './FoundedUsers';
 import useUserChats from '../../../../hooks/useUserChats';
 import UserChatsList from './UserChatsList';
 import CurrentUserInfo from './CurrentUserInfo';
+import ChatsWrapper from './ChatsWrapper';
 
 
 interface ChatsProps {
@@ -35,19 +36,13 @@ const Chats: React.FC<ChatsProps> = ({isOpen, handleClose}) => {
     }, [])
     
     return (
-        <div className={`chats-wrapper ${isOpen && 'open'}`}>
+        <ChatsWrapper handleClose={handleClose} isOpen={isOpen}>
             <Logo size={32} />
             <CurrentUserInfo />
             <SearchUser onSearch={handleSearchUser} />
             {searchedUsers && <FoundedUsers users={searchedUsers} />}
             {userChats?.length ? <UserChatsList userChats={userChats} /> : null}
-            <button 
-                className='close-button chats-button'
-                onClick={handleClose}
-            >
-                close
-            </button>
-        </div> 
+        </ChatsWrapper> 
     );
 }
  
