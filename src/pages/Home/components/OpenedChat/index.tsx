@@ -15,11 +15,13 @@ interface OpenedChatProps {
 
 const OpenedChat: React.FC<OpenedChatProps> = ({handleOpenDrawer}) => {
     const params = useParams()
-    const { setChat, isLoading, currentChatUser } = useCurrentChat()
+    const { setChat, isLoading, currentChatUser, endChat } = useCurrentChat()
 
     useEffect(() => {
         if(params.slug) {
             setChat(params.slug)
+        } else {
+            endChat()
         }
         
         // eslint-disable-next-line

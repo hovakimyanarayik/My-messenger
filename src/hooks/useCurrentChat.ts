@@ -24,6 +24,10 @@ function useCurrentChat() {
         dispatch(endLoading())
     }
 
+    const endChat = () => {
+        dispatch(changeUser(null))
+    }
+
     const sendMessage = useCallback(async (text: string, img: string | null) => {
         if(!user || !currentChatUser) return;
         const combinedId = combineIds(user.uid, currentChatUser.uid)
@@ -55,7 +59,7 @@ function useCurrentChat() {
         })
     }, [user, currentChatUser])
 
-    return {currentChatUser, isLoading, error, setChat, sendMessage, getMessages}
+    return {currentChatUser, isLoading, error, setChat, sendMessage, getMessages, endChat}
 }
 
 export default useCurrentChat

@@ -3,3 +3,7 @@
     font-weight: var(--fw-normal);
     text-align: center;
 }
+
+.logo {
+    cursor: pointer;
+}
