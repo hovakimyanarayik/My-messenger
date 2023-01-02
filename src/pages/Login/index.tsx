@@ -14,6 +14,8 @@ const Login: React.FC = () => {
         if(user) {
             navigate('/', {replace: true})
         }
+
+        // eslint-disable-next-line
     }, [user])
 
     const handleLogin = (values: LoginProps) => {

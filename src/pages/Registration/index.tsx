@@ -17,6 +17,8 @@ const Registration: React.FC = () => {
         if(user) {
             navigate('/', {replace: true})
         }
+
+        // eslint-disable-next-line
     }, [user])
 
     const onSubmit = (values: RegProps) => {

@@ -49,6 +49,7 @@ const useUserChats = () => {
         }
         navigate(`/${selectedUser.uid}`)
 
+        // eslint-disable-next-line
     }, [])
 
 
@@ -59,7 +60,8 @@ const useUserChats = () => {
             const userChats: UserChatItem[] = data ? Object.entries(data) : []
             fn(userChats)
         })
-
+        
+    // eslint-disable-next-line
     }, [])
 
     return {onChatOpen, getUserChatsList}

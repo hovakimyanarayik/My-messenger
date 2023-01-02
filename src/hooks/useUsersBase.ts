@@ -39,6 +39,8 @@ function useUsersBase(): UsersBaseMethods {
         const docRef = doc(db, "users", id);
         const docSnap = await getDoc(docRef);
         return docSnap.data()
+
+        // eslint-disable-next-line
     }, [usersCollectionRef])
 
     return {addUser, getUsers, getByName, getById}

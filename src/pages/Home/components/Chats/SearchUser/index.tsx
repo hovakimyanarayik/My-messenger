@@ -15,6 +15,8 @@ const SearchUser: React.FC<SearchUserProps> = ({onSearch}) => {
 
     useEffect(() => {
         onSearch(debounced);
+
+        // eslint-disable-next-line
     }, [debounced])
     
 

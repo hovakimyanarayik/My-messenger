@@ -33,6 +33,8 @@ const Chats: React.FC<ChatsProps> = ({isOpen, handleClose}) => {
 
     useEffect(() => {
         getUserChatsList(setUserChats)
+
+        // eslint-disable-next-line
     }, [])
     
     return (

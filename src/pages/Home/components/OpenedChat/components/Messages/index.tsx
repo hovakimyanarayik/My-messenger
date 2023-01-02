@@ -16,10 +16,14 @@ const Messages: React.FC = () => {
     useEffect(() => {
         getMessages(setMessages)
         scrollWrapperToBottom()
-    }, [getMessages, wrapperRef.current])
+
+        // eslint-disable-next-line
+    }, [getMessages])
     
     useEffect(() => {
         scrollWrapperToBottom()
+
+        // eslint-disable-next-line
     }, [messages])
     
     return ( 

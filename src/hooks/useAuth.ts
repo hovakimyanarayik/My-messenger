@@ -19,6 +19,8 @@ function useAuth() : AuthHookMethods {
         if(error) {
             setTimeout(() => dispatch(setError(null)), 2000)
         }
+
+        // eslint-disable-next-line
     }, [error])
 
     onAuthStateChanged(auth, () => {
