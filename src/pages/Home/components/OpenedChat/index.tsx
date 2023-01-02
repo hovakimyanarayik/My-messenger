@@ -21,6 +21,8 @@ const OpenedChat: React.FC<OpenedChatProps> = ({handleOpenDrawer}) => {
         if(params.slug) {
             setChat(params.slug)
         }
+        
+        // eslint-disable-next-line
     }, [params.slug])
 
     return ( 

@@ -9,12 +9,12 @@ interface UserChatsListProps {
 const UserChatsList: React.FC<UserChatsListProps> = ({userChats}) => {
 
     const sortedChats = useMemo(() => {
-        return userChats.sort((a, b) => (a[1].date.seconds - b[1].date.seconds))
+        return userChats.sort((a, b) => ( b[1].date.seconds - a[1].date.seconds))
     }, [userChats])
     
     return (
         <div className='users-wrapper'>
-            {sortedChats.map(([combinedId, {date, userInfo}]) => (
+            {sortedChats.map(([combinedId, {userInfo}]) => (
                 <User 
                     key={combinedId} 
                     email={userInfo.email} 
