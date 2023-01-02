@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { db } from './../firebase.config';
-import { onSnapshot, doc, setDoc, getDoc, updateDoc, serverTimestamp } from 'firebase/firestore';
+import { onSnapshot, doc, setDoc, getDoc, updateDoc } from 'firebase/firestore';
 import { UserChatItem, UserPropsWithId } from './../types/userTypes';
 import useAuth from './useAuth';
 import { useNavigate } from 'react-router-dom';
@@ -25,8 +25,30 @@ const useUserChats = () => {
                 email: secondUser.email,
                 photoURL: secondUser.photoURL
             },
-            [combinedId+'.date']: serverTimestamp()
+            [combinedId+'.date']: Date.now(),
+            [combinedId+'.lastMessage']: null
         })
+    }
+
+    const updateLastMessages = async (firstId: string, secondId: string, message: string) => {
+        const combinedId = combineIds(firstId, secondId)
+
+        const firstDocRef = doc(db, 'userChats', firstId)
+        await updateDoc(firstDocRef, {
+            [combinedId + '.lastMessage']: {
+                text: message,
+                date: Date.now()
+            }
+        })
+
+        const secondDocRef = doc(db, 'userChats', secondId)
+        await updateDoc(secondDocRef, {
+            [combinedId + '.lastMessage']: {
+                text: message,
+                date: Date.now()
+            }
+        })
+
     }
 
     const onChatOpen = useCallback(async (selectedUser: UserPropsWithId) => {
@@ -60,11 +82,11 @@ const useUserChats = () => {
             const userChats: UserChatItem[] = data ? Object.entries(data) : []
             fn(userChats)
         })
-        
+
     // eslint-disable-next-line
     }, [])
 
-    return {onChatOpen, getUserChatsList}
+    return {onChatOpen, getUserChatsList, updateLastMessages}
 
 }
 

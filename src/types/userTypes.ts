@@ -1,3 +1,4 @@
+import { UserLastMessage } from './messageTypes';
 import { RegProps } from "./authTypes";
 
 
@@ -15,11 +16,9 @@ export interface UsersBaseMethods {
 export type UserChatItem = [
     string, 
     {
-        date: {
-            nanoseconds: number
-            seconds: number
-        }
+        date: number
         userInfo: UserPropsWithId
+        lastMessage: UserLastMessage
     }
 ] 
 

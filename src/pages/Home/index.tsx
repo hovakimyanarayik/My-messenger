@@ -1,5 +1,5 @@
 import './style.css'
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Chats from './components/Chats';
 import OpenedChat from './components/OpenedChat';
 
@@ -15,6 +15,10 @@ const Home: React.FC = () => {
     function handleOpenDrawer() {
         setIsOpened(true)
     }
+
+    useEffect(() => {
+        document.title = 'Messenger: Home'
+    }, [])
 
     return ( 
         <div className="home-wrapper">

@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { arrayUnion, Timestamp, updateDoc, onSnapshot, doc } from 'firebase/firestore';
+import { arrayUnion, updateDoc, onSnapshot, doc } from 'firebase/firestore';
 import { db } from './../firebase.config';
 import { IMessage } from './../types/messageTypes';
 import { useAppSelector } from './useAppSelector';
@@ -8,12 +8,14 @@ import useUsersBase from './useUsersBase';
 import { changeUser, endLoading, startLoading } from '../store/slices/currentChatSlice';
 import { combineIds } from '../helpers';
 import useAuth from './useAuth';
+import useUserChats from './useUserChats';
 
 function useCurrentChat() {
     const { error, isLoading, user: currentChatUser } = useAppSelector(state => state.currentChat)
     const { user } = useAuth()
     const dispatch = useAppDispatch()
     const { getById } = useUsersBase()
+    const {updateLastMessages} = useUserChats()
 
     const setChat = async (id: string) => {
         dispatch(startLoading())
@@ -28,12 +30,16 @@ function useCurrentChat() {
         await updateDoc(doc(db, 'chats', combinedId), {
             messages: arrayUnion({
                 text,
-                date: Timestamp.now(),
+                date: Date.now(),
                 img: img,
                 senderId: user.uid
             })
         })
+        if(text) {
+            updateLastMessages(user.uid, currentChatUser.uid, text)
+        }
         
+        // eslint-disable-next-line
     }, [user, currentChatUser])
 
     const getMessages = useCallback( async (fn: (messages: IMessage[] ) => void) => {
@@ -43,7 +49,8 @@ function useCurrentChat() {
             if(doc.exists()) {
                 const data = doc.data()
                 const messages: IMessage[] = data.messages
-                fn(messages.sort((a, b) => b.date.seconds - a.date.seconds))
+                fn(messages.sort((a, b) => b.date - a.date))
+                
             }            
         })
     }, [user, currentChatUser])

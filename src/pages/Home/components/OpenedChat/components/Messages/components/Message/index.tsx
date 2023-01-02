@@ -1,5 +1,6 @@
 import { Avatar, Image } from 'antd';
 import React from 'react';
+import { formateTimestamp } from '../../../../../../../../helpers';
 import useAuth from '../../../../../../../../hooks/useAuth';
 import useCurrentChat from '../../../../../../../../hooks/useCurrentChat';
 import { IMessage } from '../../../../../../../../types/messageTypes';
@@ -17,7 +18,7 @@ const Message:React.FC<MessageProps> = ({ message }) => {
         <div className={`message ${message.senderId === user?.uid ? 'owner' : ''}`}>
         <div className="messageInfo">
             <Avatar size={35} src={user?.uid === message.senderId ? user.photoURL : currentChatUser?.photoURL} />
-            {/* <span>{message.date.toLocaleString()}</span> */}
+            <span className='message-time'>{formateTimestamp(message.date)}</span>
         </div>
         <div className="messageContent">
             {message.text && (<p>{message.text}</p>)}

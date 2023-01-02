@@ -18,6 +18,10 @@ const Login: React.FC = () => {
         // eslint-disable-next-line
     }, [user])
 
+    useEffect(() => {
+        document.title = 'Messenger: Login'
+    }, [])
+
     const handleLogin = (values: LoginProps) => {
         login(values)
     }

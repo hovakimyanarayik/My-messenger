@@ -21,6 +21,10 @@ const Registration: React.FC = () => {
         // eslint-disable-next-line
     }, [user])
 
+    useEffect(() => {
+        document.title = "Messenger: Registration"
+    }, [])
+
     const onSubmit = (values: RegProps) => {
         register({...values, photoURL: downloadURL})
         removeFileURL()

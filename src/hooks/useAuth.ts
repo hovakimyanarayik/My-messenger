@@ -6,6 +6,7 @@ import { useAppDispatch } from './useAppDispatch';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import { useAppSelector } from './useAppSelector';
 import { changeUser, endLoading, setError, setInitialized, startLoading } from '../store/slices/authSlice';
+import { changeUser as changeCurrentUser } from '../store/slices/currentChatSlice';
 import useUsersBase from './useUsersBase';
 
 const defaultPhotoUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyDgkPQavzX7KwcLzeAsf0fgOx_-D51F3fag&usqp=CAU'
@@ -19,7 +20,6 @@ function useAuth() : AuthHookMethods {
         if(error) {
             setTimeout(() => dispatch(setError(null)), 2000)
         }
-
         // eslint-disable-next-line
     }, [error])
 
@@ -27,6 +27,9 @@ function useAuth() : AuthHookMethods {
         dispatch(changeUser(auth.currentUser))
         if(!initialized) {
             dispatch(setInitialized())
+        }
+        if(!user) {
+            dispatch(changeCurrentUser(null))
         }
     })
 

@@ -28,9 +28,8 @@ const Messages: React.FC = () => {
     
     return ( 
         <div className="messages-wrapper" ref={wrapperRef}>
-            {/* <Message /> */}
             {messages.map(m => (
-                <Message message={m} key={m.date.nanoseconds} />
+                <Message message={m} key={m.date} />
             ))}
         </div>
      );

@@ -116,7 +116,7 @@
     color: lightgray;
     font-weight: 300;
     margin-bottom: 20px;
-
+    align-items: center;
 }
 
 
@@ -157,6 +157,9 @@
     color: white;
 }
 
+.message-time {
+    font-size: var(--fs-sm);
+}
 
 .open-button {
     position: absolute;

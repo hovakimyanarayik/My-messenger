@@ -11,7 +11,7 @@ const UsersList: React.FC<UsersListProps> = ({ users }) => {
     return ( 
         <div className="users-wrapper">
             {users.map(user => (
-                <User key={user.uid} {...user} />
+                <User key={user.uid} {...user} lastMessage={null} />
             ))}
         </div>
      );

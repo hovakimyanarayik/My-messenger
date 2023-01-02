@@ -60,7 +60,7 @@
     padding: .5rem 1rem;
     display: flex;
     align-items: center;
-    gap: 1rem;
+    justify-content: space-between;
     color: white;
     transition: .2s;
 }
@@ -70,6 +70,12 @@
     cursor: pointer;
 }
 
+.user-chat-info-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
 .user-chat-name {
     font-size: var(--fs-lg);
 }
@@ -77,6 +83,7 @@
 .last-message {
     color: lightgray;
 }
+
 
 .founded-users {
     width: 100%;
